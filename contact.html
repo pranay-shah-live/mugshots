@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Mugshots</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/logo.png" alt="Mugshots Logo">
+        <span class="brand-name">MUGSHOTS</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#how-it-works">How It Works</a></li>
+        <li><a href="index.html#products">Mugs & Merch</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html" class="active">Contact Us</a></li>
+      </ul>
+      <div class="header-actions">
+        <a href="index.html#products" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.88rem;">Shop Mugs</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="policy-hero">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>Have questions about your order or need assistance with customization? We are here to help.</p>
+    </div>
+  </div>
+
+  <main class="policy-content">
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- Contact Details -->
+        <div class="contact-info-card">
+          <h2 style="margin-top: 0; font-size: 1.5rem; margin-bottom: 24px; color: var(--primary);">Merchant & Support Info</h2>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Merchant Legal Entity</div>
+              <div class="contact-item-val">PRANAY HIMANSHU SHAH</div>
+              <div class="contact-item-sub">Trade Name: Mugshots</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Customer Support Hotline / WhatsApp</div>
+              <div class="contact-item-val"><a href="tel:8169718315" style="color: var(--accent);">+91 8169718315</a></div>
+              <div class="contact-item-sub">Monday – Saturday, 10:00 AM – 7:00 PM IST</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Support Email</div>
+              <div class="contact-item-val"><a href="mailto:Pranayshah995@gmail.com" style="color: var(--accent);">Pranayshah995@gmail.com</a></div>
+              <div class="contact-item-sub">Average response time: within 2 hours</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Operating & Registered Address</div>
+              <div class="contact-item-val">Mumbai, Maharashtra, India</div>
+              <div class="contact-item-sub">Jurisdiction: Mumbai, Maharashtra</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Quick Inquiry Form -->
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 36px;">
+          <h2 style="margin-top: 0; font-size: 1.5rem; margin-bottom: 8px; color: var(--primary);">Send a Message</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">Need help with a bulk inquiry or special occasion gift? Drop us a note!</p>
+
+          <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! Our team will contact you via WhatsApp / Email shortly.'); this.reset();">
+            <div class="form-group">
+              <label class="form-label">Your Name *</label>
+              <input type="text" class="form-input" placeholder="Full Name" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Phone / WhatsApp *</label>
+                <input type="tel" class="form-input" placeholder="+91 9876543210" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" placeholder="name@example.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Inquiry / Order ID *</label>
+              <textarea class="form-textarea" rows="4" placeholder="How can we help you?" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Message</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Mugshots (PRANAY HIMANSHU SHAH). All Rights Reserved.</div>
+        <div class="payment-badges">
+          <a href="terms.html" style="color: #94a3b8; margin-right: 12px;">Terms</a>
+          <a href="privacy-policy.html" style="color: #94a3b8; margin-right: 12px;">Privacy</a>
+          <a href="refund-policy.html" style="color: #94a3b8; margin-right: 12px;">Refunds</a>
+          <a href="shipping-policy.html" style="color: #94a3b8;">Shipping</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
