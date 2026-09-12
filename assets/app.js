@@ -250,7 +250,7 @@ function openOrderModal(productId) {
   document.getElementById("summary-name").textContent = prod.name;
   document.getElementById("summary-meta").textContent = `${prod.capacity} • ${prod.material}`;
   document.getElementById("summary-price").textContent = `₹${prod.price}`;
-  document.getElementById("btn-pay-text").textContent = `Pay ₹${prod.price} via Razorpay`;
+  document.getElementById("btn-pay-text").textContent = `Pay ₹${prod.price} via Cashfree`;
 
   // Reset views
   document.getElementById("checkout-form-view").style.display = "block";
