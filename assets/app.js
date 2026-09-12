@@ -5,7 +5,7 @@ const STORE_CONFIG = {
   merchantName: "PRANAY HIMANSHU SHAH",
   supportPhone: "8169718315",
   supportPhoneFormatted: "+91 8169718315",
-  supportEmail: "Pranayshah995@gmail.com",
+  supportEmail: "support@mugshots.com",
   currency: "INR"
 };
 
