@@ -1188,3 +1188,29 @@ img {
   display: inline-block;
   border: 2px dashed var(--secondary);
 }
+
+/* Fix Header Structure and Logo Size */
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.brand-logo img {
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  box-shadow: var(--shadow-sm);
+}
