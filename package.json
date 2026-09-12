@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/pranay-shah-live/mugshots#readme",
   "dependencies": {
-    "razorpay": "^2.9.8"
+    "cashfree-pg": "^6.0.6"
   }
 }

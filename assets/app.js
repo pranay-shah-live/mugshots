@@ -6,7 +6,6 @@ const STORE_CONFIG = {
   supportPhone: "8169718315",
   supportPhoneFormatted: "+91 8169718315",
   supportEmail: "Pranayshah995@gmail.com",
-  razorpayKey: "rzp_live_TbDWMqgpkqzOSt", // Razorpay Key ID
   currency: "INR"
 };
 
@@ -269,7 +268,7 @@ function closeOrderModal() {
   document.body.style.overflow = "auto";
 }
 
-// Handle Form Submission & Razorpay Checkout
+// Handle Form Submission & Cashfree Checkout
 async function handleCheckoutSubmit(e) {
   e.preventDefault();
 
@@ -297,16 +296,17 @@ async function handleCheckoutSubmit(e) {
     const response = await fetch('/api/create-order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount: currentSelectedProduct.price })
+      body: JSON.stringify({ 
+        amount: currentSelectedProduct.price,
+        name, phone, email
+      })
     });
 
     if (!response.ok) {
       throw new Error("Failed to create order on server");
     }
 
-    const { orderId } = await response.json();
-
-    const amountInPaise = currentSelectedProduct.price * 100;
+    const { orderId, paymentSessionId } = await response.json();
 
     lastOrderData = {
       orderId,
@@ -314,53 +314,34 @@ async function handleCheckoutSubmit(e) {
       customer: { name, phone, email, address, pincode, notes }
     };
 
-    // 2. Open Razorpay Checkout
-    if (typeof Razorpay !== "undefined") {
-      const options = {
-        key: STORE_CONFIG.razorpayKey,
-        amount: amountInPaise,
-        currency: STORE_CONFIG.currency,
-        name: STORE_CONFIG.brandName,
-        description: `Order #${orderId} - ${currentSelectedProduct.name}`,
-        image: "assets/logo.png",
-        order_id: orderId, // The secure Order ID from the backend
-        handler: function (response) {
-          // Payment successful
-          lastOrderData.paymentId = response.razorpay_payment_id;
-          showOrderSuccess(lastOrderData);
-        },
-        prefill: {
-          name: name,
-          email: email || "customer@example.com",
-          contact: phone
-        },
-        notes: {
-          order_id: orderId,
-          product_name: currentSelectedProduct.name,
-          delivery_address: `${address}, PIN: ${pincode}`,
-          customization_notes: notes || "To be provided via WhatsApp"
-        },
-        theme: {
-          color: "#0d2238"
-        },
-        modal: {
-          ondismiss: function () {
-            console.log("Checkout modal closed by customer.");
-            btnPay.textContent = originalPayText;
-            document.getElementById("checkout-form").querySelector("button[type='submit']").disabled = false;
-          }
-        }
-      };
+    // 2. Open Cashfree Checkout
+    if (typeof Cashfree !== "undefined") {
+      const cf = Cashfree({ mode: "production" }); // Use "sandbox" if testing without live keys
+      const result = await cf.checkout({
+        paymentSessionId: paymentSessionId,
+        redirectTarget: "_modal",
+      });
 
-      const rzp = new Razorpay(options);
-      rzp.on("payment.failed", function (resp) {
-        alert("Payment failed: " + (resp.error.description || "Please try again."));
+      if (result.error) {
+        console.error("Cashfree checkout error:", result.error);
+        alert("Payment was not completed.");
         btnPay.textContent = originalPayText;
         document.getElementById("checkout-form").querySelector("button[type='submit']").disabled = false;
-      });
-      rzp.open();
+        return;
+      }
+
+      if (result.redirect) {
+        console.log("Redirecting for 3DS or bank page...");
+        return;
+      }
+
+      if (result.paymentDetails) {
+        // Payment successful
+        lastOrderData.paymentId = result.paymentDetails.paymentMessage || "Success";
+        showOrderSuccess(lastOrderData);
+      }
     } else {
-      throw new Error("Razorpay script not loaded.");
+      throw new Error("Cashfree script not loaded.");
     }
   } catch (err) {
     console.error("Checkout Error:", err);

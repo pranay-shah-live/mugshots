@@ -2,3 +2,9 @@
 .secrets/
 .env
 .vercel
+
+node_modules/
+package-lock.json
+vercel-login.log
+
+.agent/skills/cashfree-skills/

@@ -1,4 +1,4 @@
-const Razorpay = require('razorpay');
+const { Cashfree, CFEnvironment } = require("cashfree-pg");
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -6,28 +6,40 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { amount } = req.body;
+    const { amount, phone, name, email } = req.body;
 
     if (!amount) {
       return res.status(400).json({ error: 'Amount is required' });
     }
 
-    const instance = new Razorpay({
-      key_id: process.env.RAZORPAY_KEY_ID,
-      key_secret: process.env.RAZORPAY_KEY_SECRET,
-    });
+    const cashfree = new Cashfree(
+      CFEnvironment.PRODUCTION,
+      process.env.CASHFREE_APP_ID,
+      process.env.CASHFREE_SECRET_KEY
+    );
 
-    const options = {
-      amount: amount * 100, // amount in the smallest currency unit (paise)
-      currency: "INR",
-      receipt: `receipt_${Date.now()}`
+    const orderId = `MUG_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+
+    const request = {
+      order_amount: amount, // Cashfree expects amount in Rupees, not paise!
+      order_currency: "INR",
+      order_id: orderId,
+      customer_details: {
+        customer_id: `CUST_${Date.now()}`,
+        customer_phone: phone || "9999999999",
+        customer_email: email || "customer@example.com",
+        customer_name: name || "Guest User"
+      }
     };
 
-    const order = await instance.orders.create(options);
+    const response = await cashfree.PGCreateOrder(request);
 
-    res.status(200).json({ orderId: order.id });
+    res.status(200).json({ 
+      orderId: orderId,
+      paymentSessionId: response.data.payment_session_id 
+    });
   } catch (error) {
-    console.error("Error creating Razorpay order:", error);
+    console.error("Error creating Cashfree order:", error.response?.data || error);
     res.status(500).json({ error: 'Something went wrong' });
   }
 };
