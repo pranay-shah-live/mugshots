@@ -22,11 +22,11 @@ const PRODUCTS = [
     badge: "Bestseller",
     description: "Premium grade white ceramic mug with high-gloss finish. Perfect for family portraits, couple photos, or custom corporate logos. Microwave & dishwasher safe.",
     imageSvg: `<svg viewBox="0 0 200 200" width="160" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="50" y="45" width="80" height="110" rx="10" fill="#ffffff" stroke="#0d2238" stroke-width="4"/>
-      <path d="M130 65 C160 65 160 115 130 120" stroke="#0d2238" stroke-width="6" fill="none" stroke-linecap="round"/>
-      <rect x="62" y="65" width="56" height="70" rx="6" fill="#f1f5f9" stroke="#ff5a1f" stroke-width="2" stroke-dasharray="4 2"/>
-      <circle cx="90" cy="95" r="14" fill="#ff5a1f" opacity="0.8"/>
-      <path d="M72 125 L84 105 L96 118 L108 100 L118 125 Z" fill="#0ea5e9"/>
+      <rect x="50" y="45" width="80" height="110" rx="10" fill="#ffffff" stroke="#0C1929" stroke-width="4"/>
+      <path d="M130 65 C160 65 160 115 130 120" stroke="#0C1929" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <rect x="62" y="65" width="56" height="70" rx="6" fill="#f1f5f9" stroke="#FF7E7C" stroke-width="2" stroke-dasharray="4 2"/>
+      <circle cx="90" cy="95" r="14" fill="#FF7E7C" opacity="0.8"/>
+      <path d="M72 125 L84 105 L96 118 L108 100 L118 125 Z" fill="#4ad2ce"/>
       <text x="90" y="180" font-size="12" font-family="sans-serif" font-weight="bold" fill="#64748b" text-anchor="middle">Photo Printable Area</text>
     </svg>`
   },
@@ -41,12 +41,12 @@ const PRODUCTS = [
     badge: "Trending",
     description: "Appears solid matte black when cool. Pour in hot tea or coffee to magically reveal your hidden custom photo and heartfelt message!",
     imageSvg: `<svg viewBox="0 0 200 200" width="160" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="50" y="45" width="80" height="110" rx="10" fill="#0d2238" stroke="#0d2238" stroke-width="4"/>
-      <path d="M130 65 C160 65 160 115 130 120" stroke="#0d2238" stroke-width="6" fill="none" stroke-linecap="round"/>
-      <path d="M60 85 Q90 65 120 85 Q90 105 60 85" fill="#ff5a1f" opacity="0.9"/>
-      <circle cx="90" cy="115" r="12" fill="#0ea5e9"/>
-      <path d="M75 140 L90 120 L105 140 Z" fill="#fbbf24"/>
-      <text x="90" y="180" font-size="12" font-family="sans-serif" font-weight="bold" fill="#ff5a1f" text-anchor="middle">Heat Activated Reveal</text>
+      <rect x="50" y="45" width="80" height="110" rx="10" fill="#0C1929" stroke="#0C1929" stroke-width="4"/>
+      <path d="M130 65 C160 65 160 115 130 120" stroke="#0C1929" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M60 85 Q90 65 120 85 Q90 105 60 85" fill="#FF7E7C" opacity="0.9"/>
+      <circle cx="90" cy="115" r="12" fill="#4ad2ce"/>
+      <path d="M75 140 L90 120 L105 140 Z" fill="#FAD46E"/>
+      <text x="90" y="180" font-size="12" font-family="sans-serif" font-weight="bold" fill="#FF7E7C" text-anchor="middle">Heat Activated Reveal</text>
     </svg>`
   },
   {
@@ -60,11 +60,11 @@ const PRODUCTS = [
     badge: "Gift Special",
     description: "Set of two interlocking or complementary customized mugs. Ideal for anniversaries, weddings, Valentine's, or best friends.",
     imageSvg: `<svg viewBox="0 0 200 200" width="160" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="35" y="55" width="55" height="90" rx="8" fill="#ffffff" stroke="#0d2238" stroke-width="3.5"/>
-      <path d="M35 70 C15 70 15 110 35 115" stroke="#0d2238" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-      <rect x="105" y="55" width="55" height="90" rx="8" fill="#ffffff" stroke="#0d2238" stroke-width="3.5"/>
-      <path d="M160 70 C180 70 180 110 160 115" stroke="#0d2238" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-      <path d="M98 90 C98 80 110 80 110 90 C110 100 98 108 98 108 C98 108 86 100 86 90 C86 80 98 80 98 90 Z" fill="#ff5a1f"/>
+      <rect x="35" y="55" width="55" height="90" rx="8" fill="#ffffff" stroke="#0C1929" stroke-width="3.5"/>
+      <path d="M35 70 C15 70 15 110 35 115" stroke="#0C1929" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+      <rect x="105" y="55" width="55" height="90" rx="8" fill="#ffffff" stroke="#0C1929" stroke-width="3.5"/>
+      <path d="M160 70 C180 70 180 110 160 115" stroke="#0C1929" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+      <path d="M98 90 C98 80 110 80 110 90 C110 100 98 108 98 108 C98 108 86 100 86 90 C86 80 98 80 98 90 Z" fill="#FF7E7C"/>
       <text x="98" y="175" font-size="12" font-family="sans-serif" font-weight="bold" fill="#64748b" text-anchor="middle">Pair of 2 Custom Mugs</text>
     </svg>`
   },
@@ -79,12 +79,12 @@ const PRODUCTS = [
     badge: "Premium",
     description: "Heavy-bottomed frosted glassware with translucent custom engraving or vibrant printing. A stylish companion for chilled beverages.",
     imageSvg: `<svg viewBox="0 0 200 200" width="160" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="52" y="42" width="76" height="116" rx="8" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="3.5" opacity="0.8"/>
-      <path d="M128 65 C155 65 155 115 128 120" stroke="#0ea5e9" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <rect x="52" y="42" width="76" height="116" rx="8" fill="#e0f2fe" stroke="#4ad2ce" stroke-width="3.5" opacity="0.8"/>
+      <path d="M128 65 C155 65 155 115 128 120" stroke="#4ad2ce" stroke-width="5" fill="none" stroke-linecap="round"/>
       <line x1="56" y1="65" x2="124" y2="65" stroke="#ffffff" stroke-width="2"/>
       <line x1="56" y1="85" x2="124" y2="85" stroke="#ffffff" stroke-width="2"/>
-      <circle cx="90" cy="105" r="16" fill="#0d2238" opacity="0.6"/>
-      <text x="90" y="180" font-size="12" font-family="sans-serif" font-weight="bold" fill="#0ea5e9" text-anchor="middle">Frosted Glass Finish</text>
+      <circle cx="90" cy="105" r="16" fill="#0C1929" opacity="0.6"/>
+      <text x="90" y="180" font-size="12" font-family="sans-serif" font-weight="bold" fill="#4ad2ce" text-anchor="middle">Frosted Glass Finish</text>
     </svg>`
   },
   {
@@ -98,9 +98,9 @@ const PRODUCTS = [
     badge: "Add-on",
     description: "Smooth-writing metal ballpoint pen with precision laser engraving of your recipient's name or company branding.",
     imageSvg: `<svg viewBox="0 0 200 200" width="160" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="40" y="92" width="120" height="16" rx="8" fill="#0d2238"/>
-      <polygon points="160,92 180,100 160,108" fill="#ff5a1f"/>
-      <rect x="50" y="90" width="20" height="4" fill="#fbbf24"/>
+      <rect x="40" y="92" width="120" height="16" rx="8" fill="#0C1929"/>
+      <polygon points="160,92 180,100 160,108" fill="#FF7E7C"/>
+      <rect x="50" y="90" width="20" height="4" fill="#FAD46E"/>
       <text x="100" y="104" font-size="8" font-family="sans-serif" font-weight="bold" fill="#ffffff" text-anchor="middle">YOUR NAME</text>
       <text x="100" y="150" font-size="12" font-family="sans-serif" font-weight="bold" fill="#64748b" text-anchor="middle">Laser Engraved Pen</text>
     </svg>`
@@ -116,9 +116,9 @@ const PRODUCTS = [
     badge: "Popular",
     description: "Thoroughly bound executive diary featuring personalized gold/silver foil name stamping on the cover and custom front photo greeting page.",
     imageSvg: `<svg viewBox="0 0 200 200" width="160" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="55" y="40" width="90" height="120" rx="6" fill="#0d2238" stroke="#163656" stroke-width="3"/>
-      <rect x="50" y="40" width="10" height="120" rx="3" fill="#ff5a1f"/>
-      <line x1="80" y1="75" x2="125" y2="75" stroke="#fbbf24" stroke-width="2"/>
+      <rect x="55" y="40" width="90" height="120" rx="6" fill="#0C1929" stroke="#163656" stroke-width="3"/>
+      <rect x="50" y="40" width="10" height="120" rx="3" fill="#FF7E7C"/>
+      <line x1="80" y1="75" x2="125" y2="75" stroke="#FAD46E" stroke-width="2"/>
       <line x1="80" y1="90" x2="125" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
       <line x1="80" y1="105" x2="115" y2="105" stroke="#94a3b8" stroke-width="1.5"/>
       <text x="100" y="180" font-size="12" font-family="sans-serif" font-weight="bold" fill="#64748b" text-anchor="middle">200-Page Ruled Diary</text>
@@ -137,8 +137,8 @@ const PRODUCTS = [
     imageSvg: `<svg viewBox="0 0 200 200" width="160" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="100" cy="55" r="14" stroke="#94a3b8" stroke-width="3.5" fill="none"/>
       <line x1="100" y1="69" x2="100" y2="85" stroke="#94a3b8" stroke-width="3.5"/>
-      <rect x="70" y="85" width="60" height="75" rx="6" fill="#ffffff" stroke="#0d2238" stroke-width="3"/>
-      <circle cx="100" cy="115" r="14" fill="#ff5a1f"/>
+      <rect x="70" y="85" width="60" height="75" rx="6" fill="#ffffff" stroke="#0C1929" stroke-width="3"/>
+      <circle cx="100" cy="115" r="14" fill="#FF7E7C"/>
       <text x="100" y="180" font-size="12" font-family="sans-serif" font-weight="bold" fill="#64748b" text-anchor="middle">Acrylic Photo Keychain</text>
     </svg>`
   }
