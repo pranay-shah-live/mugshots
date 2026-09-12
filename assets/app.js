@@ -6,7 +6,7 @@ const STORE_CONFIG = {
   supportPhone: "8169718315",
   supportPhoneFormatted: "+91 8169718315",
   supportEmail: "Pranayshah995@gmail.com",
-  razorpayKey: "rzp_live_PYDz4DvD5uDgWq", // Razorpay Key ID
+  razorpayKey: "rzp_live_TbDWMqgpkqzOSt", // Razorpay Key ID
   currency: "INR"
 };
 
@@ -270,7 +270,7 @@ function closeOrderModal() {
 }
 
 // Handle Form Submission & Razorpay Checkout
-function handleCheckoutSubmit(e) {
+async function handleCheckoutSubmit(e) {
   e.preventDefault();
 
   if (!currentSelectedProduct) return;
@@ -287,60 +287,86 @@ function handleCheckoutSubmit(e) {
     return;
   }
 
-  const orderId = "MUG-" + Math.floor(100000 + Math.random() * 900000);
-  const amountInPaise = currentSelectedProduct.price * 100;
+  const btnPay = document.getElementById("btn-pay-text");
+  const originalPayText = btnPay.textContent;
+  btnPay.textContent = "Processing...";
+  document.getElementById("checkout-form").querySelector("button[type='submit']").disabled = true;
 
-  lastOrderData = {
-    orderId,
-    product: currentSelectedProduct,
-    customer: { name, phone, email, address, pincode, notes }
-  };
+  try {
+    // 1. Create order securely on backend
+    const response = await fetch('/api/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: currentSelectedProduct.price })
+    });
 
-  // Check if Razorpay script is available
-  if (typeof Razorpay !== "undefined") {
-    const options = {
-      key: STORE_CONFIG.razorpayKey,
-      amount: amountInPaise,
-      currency: STORE_CONFIG.currency,
-      name: STORE_CONFIG.brandName,
-      description: `Order #${orderId} - ${currentSelectedProduct.name}`,
-      image: "assets/logo.png",
-      handler: function (response) {
-        // Payment successful
-        lastOrderData.paymentId = response.razorpay_payment_id;
-        showOrderSuccess(lastOrderData);
-      },
-      prefill: {
-        name: name,
-        email: email || "customer@example.com",
-        contact: phone
-      },
-      notes: {
-        order_id: orderId,
-        product_name: currentSelectedProduct.name,
-        delivery_address: `${address}, PIN: ${pincode}`,
-        customization_notes: notes || "To be provided via WhatsApp"
-      },
-      theme: {
-        color: "#0d2238"
-      },
-      modal: {
-        ondismiss: function () {
-          console.log("Checkout modal closed by customer.");
-        }
-      }
+    if (!response.ok) {
+      throw new Error("Failed to create order on server");
+    }
+
+    const { orderId } = await response.json();
+
+    const amountInPaise = currentSelectedProduct.price * 100;
+
+    lastOrderData = {
+      orderId,
+      product: currentSelectedProduct,
+      customer: { name, phone, email, address, pincode, notes }
     };
 
-    const rzp = new Razorpay(options);
-    rzp.on("payment.failed", function (resp) {
-      alert("Payment failed: " + (resp.error.description || "Please try again."));
-    });
-    rzp.open();
-  } else {
-    // Fallback: If Razorpay library is blocked or offline during testing
-    console.warn("Razorpay script not loaded. Simulating order placement.");
-    lastOrderData.paymentId = "pay_demo_" + Math.random().toString(36).substring(7);
-    showOrderSuccess(lastOrderData);
+    // 2. Open Razorpay Checkout
+    if (typeof Razorpay !== "undefined") {
+      const options = {
+        key: STORE_CONFIG.razorpayKey,
+        amount: amountInPaise,
+        currency: STORE_CONFIG.currency,
+        name: STORE_CONFIG.brandName,
+        description: `Order #${orderId} - ${currentSelectedProduct.name}`,
+        image: "assets/logo.png",
+        order_id: orderId, // The secure Order ID from the backend
+        handler: function (response) {
+          // Payment successful
+          lastOrderData.paymentId = response.razorpay_payment_id;
+          showOrderSuccess(lastOrderData);
+        },
+        prefill: {
+          name: name,
+          email: email || "customer@example.com",
+          contact: phone
+        },
+        notes: {
+          order_id: orderId,
+          product_name: currentSelectedProduct.name,
+          delivery_address: `${address}, PIN: ${pincode}`,
+          customization_notes: notes || "To be provided via WhatsApp"
+        },
+        theme: {
+          color: "#0d2238"
+        },
+        modal: {
+          ondismiss: function () {
+            console.log("Checkout modal closed by customer.");
+            btnPay.textContent = originalPayText;
+            document.getElementById("checkout-form").querySelector("button[type='submit']").disabled = false;
+          }
+        }
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.on("payment.failed", function (resp) {
+        alert("Payment failed: " + (resp.error.description || "Please try again."));
+        btnPay.textContent = originalPayText;
+        document.getElementById("checkout-form").querySelector("button[type='submit']").disabled = false;
+      });
+      rzp.open();
+    } else {
+      throw new Error("Razorpay script not loaded.");
+    }
+  } catch (err) {
+    console.error("Checkout Error:", err);
+    alert("Error initializing checkout. Please try again.");
+    btnPay.textContent = originalPayText;
+    document.getElementById("checkout-form").querySelector("button[type='submit']").disabled = false;
   }
 }
 

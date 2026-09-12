@@ -1,0 +1,24 @@
+{
+  "name": "mugshots",
+  "version": "1.0.0",
+  "description": "A lightweight, high-performance static eCommerce storefront built for **Mugshots**—an online custom mugs and personalized gifting brand owned and operated by **PRANAY HIMANSHU SHAH**.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranay-shah-live/mugshots.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pranay-shah-live/mugshots/issues"
+  },
+  "homepage": "https://github.com/pranay-shah-live/mugshots#readme",
+  "dependencies": {
+    "razorpay": "^2.9.8"
+  }
+}
