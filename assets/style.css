@@ -275,7 +275,7 @@ img {
   gap: 24px;
 }
 
-.hero-badge-item {
+.badge-item {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -284,7 +284,7 @@ img {
   color: var(--primary-light);
 }
 
-.hero-badge-item svg {
+.badge-item svg {
   color: var(--accent);
 }
 
@@ -1152,4 +1152,39 @@ img {
   .modal-card {
     padding: 24px;
   }
+}
+
+/* Missing Hero Image Classes */
+.hero-image-card {
+  position: relative;
+  background: var(--bg-card);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  border: 4px solid var(--secondary-light);
+  transform: rotate(2deg);
+  transition: var(--transition);
+  text-align: center;
+  max-width: 450px;
+  margin: 0 auto;
+}
+.hero-image-card:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+.hero-image-card img {
+  max-height: 320px;
+  width: auto;
+  margin: 0 auto;
+  object-fit: contain;
+}
+.hero-card-caption {
+  margin-top: 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--secondary-light);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  border: 2px dashed var(--secondary);
 }
